@@ -240,7 +240,7 @@ module.exports = {
     },
     getCities: (req, res) => {
         sequelize.query(`
-            SELECT cities.city_id, cities.name, cities.rating, cities.country_id, countries.name
+            SELECT cities.city_id, cities.name AS city, cities.rating AS rating, countries.name AS country
             FROM cities
             JOIN countries 
             ON cities.country_id = countries.country_id
@@ -250,8 +250,8 @@ module.exports = {
     },
     deleteCity: (req, res) => {
         sequelize.query(`
-            DELETE FROM cities
-            WHERE city_id = ${req.params.city_id};
+        DELETE FROM cities
+        WHERE cities.city_id = ${req.params.id};
         `).then(dbRes => { res.status(200).send(dbRes[0]) }
         ).catch(TheseHandsBruh => console.log(TheseHandsBruh))
     }
