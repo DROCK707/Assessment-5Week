@@ -21,7 +21,14 @@ module.exports = {
                 rating INTEGER,
                 country_id INTEGER REFERENCES countries(country_id)
             );
-        
+
+            INSERT INTO cities (name, rating)
+            VALUES ('Banja Luka', 5),
+            ('Vranic', 5),
+            ('Mostar', 5);
+            
+
+
             insert into countries (name)
             values ('Afghanistan'),
             ('Albania'),
